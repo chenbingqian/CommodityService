@@ -1,9 +1,9 @@
 package controller
 
 import (
+	"CommodityService/service"
 	"fmt"
 	"net/http"
-	"product-kiki-master/service"
 
 	"github.com/gin-gonic/gin"
 )

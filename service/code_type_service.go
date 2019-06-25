@@ -1,9 +1,9 @@
 package service
 
 import (
+	"CommodityService/entity"
+	"CommodityService/util"
 	"fmt"
-	"product-kiki-master/entity"
-	"product-kiki-master/util"
 )
 
 func FindAll() []entity.Codetype {

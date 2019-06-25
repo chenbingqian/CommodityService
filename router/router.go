@@ -1,7 +1,7 @@
 package router
 
 import (
-	. "product-kiki-master/controller"
+	. "CommodityService/controller"
 
 	"github.com/gin-gonic/gin"
 )

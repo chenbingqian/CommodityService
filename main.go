@@ -1,8 +1,8 @@
 package main
 
 import (
-	"product-kiki-master/router"
-	_ "product-kiki-master/util"
+	"CommodityService/router"
+	_ "CommodityService/util"
 )
 
 func main() {
