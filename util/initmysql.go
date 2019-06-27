@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 )
 
@@ -17,6 +18,10 @@ func init() {
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	// 输出sql
+	Engine.ShowSQL(true)
+	Engine.Logger().SetLevel(core.LOG_DEBUG)
 
 	err = Engine.Ping()
 	if err != nil {

@@ -1,7 +1,7 @@
 package router
 
 import (
-	. "CommodityService/controller"
+	api "CommodityService/controller"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -21,9 +21,14 @@ func InitRouter() *gin.Engine {
 	group := router.Group("/kiki/v1")
 	codetype := group.Group("/codetype")
 
-	codetype.GET("/list", FindUserList)
-	codetype.POST("/insert", InsertCodeType)
-	codetype.POST("/del", DeleteCodeType)
+	codetype.GET("/list", api.FindCodeTypeList)
+	codetype.POST("/insert", api.InsertCodeType)
+	codetype.POST("/del", api.DeleteCodeType)
+
+	code := group.Group("/code")
+	code.GET("/list", api.FindCodeList)
+	code.POST("/insert", api.InsertCode)
+	code.POST("/del", api.DelCode)
 
 	return router
 }
