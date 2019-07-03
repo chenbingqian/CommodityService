@@ -14,7 +14,7 @@ const CODE_SUCCES_MSG = "请求成功！"
 const CODE_INVALID = 20000
 const CODE_INVALID_MSG = "数据不合法"
 
-const CODE_ERROR = 40000
+const CODE_ERROR = 500
 const CODE_ERROR_MSG = "服务异常"
 
 // business error

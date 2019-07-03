@@ -29,6 +29,12 @@ func InitRouter() *gin.Engine {
 	code.GET("/list", api.FindCodeList)
 	code.POST("/insert", api.InsertCode)
 	code.POST("/del", api.DelCode)
+	code.POST("/list/by/codetype", api.SelectCodeByType)
+
+	attribute := group.Group("/attribute")
+	attribute.POST("/condition/list", api.ConditionAttributeList)
+	attribute.POST("/insert", api.InsertAttribute)
+	attribute.POST("/del", api.DelAttribute)
 
 	return router
 }

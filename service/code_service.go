@@ -12,11 +12,22 @@ import (
 // select all code list
 func FindCodeAll() []entity.Code {
 	code := make([]entity.Code, 0)
-	err := util.Engine.Find(&code)
+	err := util.Engine.OrderBy("code_type,value").Find(&code)
 	if err != nil {
 		fmt.Println(err)
 	}
 	return code
+}
+
+// select code by code_type
+func SelectCodeByType(codeType string) (status int, info gin.H) {
+
+	code := make([]entity.Code, 0)
+	err := util.Engine.Where("code_type = ?", codeType).Find(&code)
+	if err != nil {
+		return util.ErrorSystem(err)
+	}
+	return util.Success(code)
 }
 
 // insert code
@@ -28,7 +39,7 @@ func InsertCode(item *entity.Code) (status int, info gin.H) {
 	}
 	_, err = util.Engine.Insert(item)
 	if err != nil {
-		util.ErrorSystem(err)
+		return util.ErrorSystem(err)
 	}
 	return util.Success(nil)
 }
