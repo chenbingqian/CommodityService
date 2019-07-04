@@ -35,10 +35,26 @@ func ErrorSystem(err error) (int, gin.H) {
 		"msg":         CODE_ERROR_MSG,
 	}
 }
+func SuccessPage(data interface{}, page *PageInfo) (int, gin.H) {
+	return http.StatusOK, gin.H{
+		"result_code": CODE_SUCCES,
+		"result_data": data,
+		"msg":         CODE_SUCCES_MSG,
+		"page_info":   page,
+	}
+}
+
 func Success(data interface{}) (int, gin.H) {
 	return http.StatusOK, gin.H{
 		"result_code": CODE_SUCCES,
 		"result_data": data,
 		"msg":         CODE_SUCCES_MSG,
 	}
+}
+
+// 分页参数
+type PageInfo struct {
+	TotalRowNumber int64 `json:"total_row_number"`
+	RowStartNumber int   `json:"row_start_number"`
+	RowCount       int   `json:"row_count"`
 }

@@ -35,6 +35,7 @@ func InitRouter() *gin.Engine {
 	attribute.POST("/condition/list", api.ConditionAttributeList)
 	attribute.POST("/insert", api.InsertAttribute)
 	attribute.POST("/del", api.DelAttribute)
+	attribute.POST("/update", api.UpdateAttribute)
 
 	return router
 }

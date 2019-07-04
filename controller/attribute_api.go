@@ -11,14 +11,19 @@ import (
 
 // condition select attribute
 func ConditionAttributeList(in *gin.Context) {
-	var item entity.Attribute
-	err := in.Bind(&item)
-	fmt.Println(&item.AttributeTypeId)
+	var info struct {
+		entity.Attribute
+		util.PageInfo
+	}
+	err := in.ShouldBind(&info)
+	fmt.Println(info.Attribute.AttributeId)
+	fmt.Println(info.PageInfo.RowCount)
+	fmt.Println(info.PageInfo.RowStartNumber)
 	if err != nil {
 		in.JSON(util.ErrorSystem(err))
 		return
 	}
-	in.JSON(service.ConditionAttributeList(&item))
+	in.JSON(service.ConditionAttributeList(&info.Attribute, &info.PageInfo))
 }
 
 // insert attribute
@@ -41,4 +46,14 @@ func DelAttribute(in *gin.Context) {
 		return
 	}
 	in.JSON(service.DelAttribute(&item))
+}
+
+func UpdateAttribute(in *gin.Context) {
+	var item entity.Attribute
+	err := in.ShouldBind(&item)
+	if err != nil {
+		in.JSON(util.ErrorSystem(err))
+		return
+	}
+	in.JSON(service.UpdateAttribute(&item))
 }
